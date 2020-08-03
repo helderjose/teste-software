@@ -1,0 +1,19 @@
+verificar se chamout uma função
+https://www.saninnsalas.com/spyon-service-method-called-in-the-constructor/
+
+let logoutSpy = spyOn(AuthService.prototype, 'logout');
+    component.logout();
+    expect(logoutSpy).toHaveBeenCalled();
+  
+
+
+  spyOnProperty
+  https://medium.com/@juanlizarazo/how-to-spy-on-a-property-getter-or-setter-with-jasmine-ad06c00ba612
+
+  
+  
+  
+  Router
+  expect router.navigate
+  http://marclloyd.co.uk/angular2/spying-on-router-navigate-in-angular-2-unit-tests/
+  

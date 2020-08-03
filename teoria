@@ -1,0 +1,40 @@
+- Teste de Unidade;
+- Teste de Integração;
+- Teste de Sistema;
+- Teste de Aceitação.
+
+
+
+
+============================================================
+==================== Teste de Unidade ====================
+============================================================
+
+- Foca em cada item do sistema individualmente para validá-lo
+- Sua execução não precisa que uma funcionalidade do sistema esteja pronta:
+    * O teste é realizado apó a construção de cada unidade.
+- Deve ser executado pela equipe de desenvolvimento.
+
+----- Caixa Preta -----
+Consiste na aplicação de testes sem a necessidade de conhecimento do código fonte.
+O foco é a funcionalidade.
+Critérios Caixa Preta:
+- Partição por equivalência;
+- Análise do valor limite;
+- Teste baseado em casos de uso;
+- Grafo causa-efeito.
+
+----- Caixa Branca -----
+Responsável por avalidar o comportamento interno do componente de software.
+Portanto, é necessário conhecer o código fonte do programa.
+Critérios Caixa Branca:
+- Baseados no fluxo de controle;
+- Baseados no fluxo de dados;
+- Baseados na complexidade.
+
+----- Quem Testa -----
+Equipe de desenvolvimento:
+- Teste de Unidade;
+- Teste de Integração.
+Equipe de Testes Distinda (específica para o teste):
+- Teste de Sistema.

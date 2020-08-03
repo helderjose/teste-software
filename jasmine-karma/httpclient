@@ -1,0 +1,153 @@
+links
+https://medium.com/@Jestfer/testing-http-requests-in-angular-with-httpclienttestingmodule-3880ceac74cf
+
+
+
+
+no servicelogin(code) {
+    const appHeaders = new HttpHeaders();
+    const options = {headers : appHeaders};
+    const payload = {};
+
+    appHeaders.append('Content-Type', 'application/json');
+    payload['code'] = code;
+
+    const tokenCall = this.http.post(this.API_URL + '/tokens', payload, options)
+    .catch(this.handleError);
+    console.log(tokenCall, ' -------------------------------------------')
+
+    tokenCall.take(1).subscribe(
+      result => {
+        if (result && result.token) {
+          console.log(result, ' ++++++++++++++++++++++++++++++++++')
+          if (result.local_user) {
+            localStorage.setItem('token', result.token);
+            this.userService.setUserBasicInfoOnStorage(result.git_lab_user, result.local_user);
+            this.router.navigate(['/dashboard']);
+          } else {
+            this.router.navigate(['/login'], { queryParams: { errorCode: 404} });
+          }
+        }
+      },
+      error => {this.router.navigate(['/login']); });
+  }
+
+
+
+
+  no spec.ts
+
+
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { TestBed, inject } from '@angular/core/testing';
+
+import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
+import { UserService } from './user.service';
+import { ConnectionUtils } from './connection-utils.service';
+import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs/Observable';
+
+describe('AuthService', () => {
+  let authService;
+  let routerMock;
+  let httpTestingController: HttpTestingController;
+
+  beforeEach(() => {
+    routerMock = new RouterMock();
+
+    TestBed.configureTestingModule({
+      imports: [
+        HttpClientTestingModule
+      ],
+      providers: [
+        AuthService,
+        ConnectionUtils,
+        // HttpClient,
+        // HttpHandler,
+        { provide: Router, useValue: routerMock },
+        UserService
+      ]
+    });
+  });
+
+  beforeEach(inject([AuthService], (authServiceAux: AuthService) => {
+    authService = authServiceAux;
+    httpTestingController = TestBed.get(HttpTestingController);
+  }));
+
+  it('entra no if', () => {
+
+    authService.login();
+
+    let mock = {
+      "token": '1234566666666666666666666666666666666',
+      "local_user": {
+        "name": "Testador"
+      },
+      "git_lab_user": {
+        "name": "Testador Gitlab"
+      }
+    };
+
+    const req = httpTestingController.expectOne(environment.apiUrl + '/tokens');
+
+    expect(req.request.method).toEqual('POST');
+
+    req.flush(mock);
+  })
+
+  it('entra no else', () => {
+
+    authService.login();
+
+    let mock = {
+      "token": '123456789',
+    };
+
+    const req = httpTestingController.expectOne(environment.apiUrl + '/tokens');
+
+    expect(req.request.method).toEqual('POST');
+
+    req.flush(mock);
+  })
+
+
+  it('para nao entrar no if', () => {
+
+    authService.login();
+
+    let mock = {
+      "token": '123456789',
+    };
+
+    const req = httpTestingController.expectOne(environment.apiUrl + '/tokens');
+
+    expect(req.request.method).toEqual('POST');
+
+    req.flush(null);
+  })
+
+  it('should redirect to /login when response error', () => {
+
+    authService.login();
+
+    let mock = {
+      "token": '123456789',
+    };
+
+    const req = httpTestingController.expectOne(environment.apiUrl + '/tokens');
+
+    // expect(req.request.method).toEqual('POST');
+
+    req.flush({message: 'my error message'}, {status: 500, statusText: 'Server error'});
+  })
+
+  
+
+});
+
+
+class RouterMock {
+  navigate = jasmine.createSpy("navigate");
+}

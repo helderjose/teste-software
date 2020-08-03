@@ -1,0 +1,48 @@
+http://www.inf.ufsc.br/~fabiane.benitti/byebug/objetos/OA31/unidade/presentation_html5.html
+
+
+https://medium.com/google-developer-experts/angular-2-testing-guide-a485b6cb1ef0
+https://codecraft.tv/courses/angular/unit-testing/angular-test-bed/
+https://github.com/angular/angular/tree/e748adda2e7a1f6e302628d0d76b5c3d1e3fc196/modules/angular2/test
+https://christianlydemann.com/complete-guide-to-angular-testing/
+https://dev.to/lysofdev/an-angular-testing-cheatsheet-5hj2
+https://medium.com/@meshileya/simplified-angular-unit-testing-caffe0fccf31
+https://medium.com/google-developer-experts/angular-2-unit-testing-with-jasmine-defe20421584
+
+
+https://angular.io/guide/testing#!#isolated-unit-tests
+https://angular.io/guide/testing#testing-http-services
+https://jasonwatmore.com/post/2017/12/15/angular-5-mock-backend-example-for-backendless-development
+
+angular v5
+https://v5.angular.io/guide/testing
+https://v5.angular.io/guide/testing#testing-http-services
+
+
+
+Teste login component usando authService
+https://codecraft.tv/courses/angular/unit-testing/mocks-and-spies/#_testing_with_the_real_code_authservice_code
+
+
+
+router
+https://stackoverflow.com/questions/39791773/angular-2-4-6-7-unit-testing-with-router
+http://marclloyd.co.uk/angular2/spying-on-router-navigate-in-angular-2-unit-tests/
+https://angular.io/api/router/testing/RouterTestingModule
+
+
+
+getter and setter
+auth.service.spec.ts
+https://medium.com/@juanlizarazo/how-to-spy-on-a-property-getter-or-setter-with-jasmine-ad06c00ba612
+https://medium.com/@luukgruijs/understanding-rxjs-behaviorsubject-replaysubject-and-asyncsubject-8cc061f1cfc0
+
+
+
+
+
+
+
+matchers jasmine
+https://tableless.com.br/jasmine-entendendo-os-matchers/
+
